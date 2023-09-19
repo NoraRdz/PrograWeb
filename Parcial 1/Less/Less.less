@@ -1,0 +1,45 @@
+
+  @color-primario: blanchedalmond;
+  @color-secundario: gray;
+
+input:checked + div#contenedor {
+  background-color: @color-secundario;
+  color: @color-primario;
+}
+div#contenedor {
+  font-family:'Courier New', Courier, monospace;
+   h1 {
+    color: red;
+  }
+  h1{
+    color: green;
+  } 
+}
+body:has(input:checked) {
+  background-color: @color-secundario;
+}
+body {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  max-width: 500;
+  margin: 0 auto;
+  background-color: blanchedalmond;
+}
+/*  .Parrafo {
+    color: gray;
+    line-height: 1.5em;
+  } */
+#Par1 {
+  font-size: 20 px;
+}
+.Encabezado1 {
+  color: mediumvioletred;
+  font: bolder;
+}
+.li {
+  font-style: italic;
+  font-size: 300px;
+  color: cornflowerblue;
+}
+li p {
+  color: #048;
+}

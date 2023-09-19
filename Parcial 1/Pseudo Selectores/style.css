@@ -1,0 +1,48 @@
+body{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    max-width: 1200;
+   margin: auto ;
+   background-color: rgba(206, 255, 253, 0.699);
+}
+
+h1{
+    color: rgb(24, 24, 48);
+}
+/*Pseudoselectores*/
+table{
+    margin:auto;
+}
+
+td img{
+    display: block; 
+    margin: 0 auto; 
+}
+tbody tr:nth-child(){
+background-color: rgb(160, 159, 95);
+}
+tbody tr:nth-child(even){
+background-color: rgb(202, 2, 2);
+}
+tbody tr:nth-child(odd){
+background-color: cadetblue;
+color:rgb(255, 255, 255);
+}
+td:hover{
+background-color: rgb(88, 36, 36);
+color:azure
+}
+div + p{
+    color: rgb(6, 26, 51);
+    background-color: rgb(139, 139, 139);
+}
+td :active{
+    background-color: brown;
+}
+img{
+    width: 200 px;
+    height: 200px ;
+}
+#Cover a:hover img {
+    content: url('Spotify.png');
+    transition-property: transform;
+}

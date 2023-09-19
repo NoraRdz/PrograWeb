@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0px;
+            padding: 0;
+        }
+        .caja{
+            width: calc((100% / 2) - 20px);
+            height: 200px;
+            background-color: aqua;
+            border: 1px solid blue;
+            float: left;
+            margin: 10px;
+        }
+        #caja1:hover{
+            transition: 500ms;
+            transform: rotate(45deg);
+        }
+        #caja2:hover{
+            transition: 500ms;
+            transform: rotate(45deg);
+
+        }
+        #caja3:hover{ 
+            transition: 500ms;
+            transform: rotate(45deg);
+        }
+        #caja4:hover{
+            transition: 500ms;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div id="caja1" class="caja">Caja1</div>
+        <div id="caja2" class="caja">Caja2</div>
+        <div id="caja3" class="caja">Caja3</div>
+        <div id="caja4" class="caja">Caja4</div>
+    </div>
+</body>
+</html>
