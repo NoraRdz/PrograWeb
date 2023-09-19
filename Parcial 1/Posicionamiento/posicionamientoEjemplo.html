@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+        .caja{
+            background-color: pink;
+            color: crimson;
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            text-align: center;
+        }
+        #caja2{
+            position: relative;
+            left: 100px;
+        }
+        #caja3{
+            position: absolute;
+            left: 300px;
+        }
+        #caja4{
+            position: fixed;
+            top: 10px;
+            right: 10px;
+        }
+        #caja5{
+            position: sticky;
+            top: 10px;
+        }
+        #caja6
+        {
+            background-color: thistle;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='caja6' class="caja">Static</div>
+    <div id='caja2' class="caja">Relative</div>
+    <div id='caja3' class="caja">Absolute</div>
+    <div id='caja4' class="caja">fixed</div>
+    <div id='caja5' class="caja">sticky</div>
+    <div id='caja6' class="caja">Static</div>
+    <div id='caja6' class="caja">Static</div>
+    <div id='caja6' class="caja">Static</div>
+    <div id='caja6' class="caja">Static</div>
+    <div id='caja6' class="caja">Static</div>
+    <div id='caja6' class="caja">Static</div>
+    <div id='caja6' class="caja">Static</div>
+</body>
+</html>
