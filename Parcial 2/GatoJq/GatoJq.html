@@ -30,11 +30,6 @@
         line-height: 2em;
       }
     </style>
-    <script
-      src="https://code.jquery.com/jquery-3.7.1.js"
-      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-      crossorigin="anonymous"
-    ></script>
   </head>
   <body>
     <div id="cont" class="contenedor">
@@ -55,7 +50,6 @@
     </div>
 
     <script>
-      /*window.onload();
       var xo = "X";
       document.getElementById("cont").addEventListener("click", function (e) {
         console.log(e.target.id);
@@ -79,30 +73,9 @@
           elemento.innerText = "";
         }
       
-      });*/
-      $("document").ready(function () {
-        var xo = "X";
-        $("#cont").click(function (e) {
-          // consle.log("click");
-          if ($(e.target).text() == "") {
-            if (xo == "X") {
-              xo = "O";
-            } else {
-              xo = "X";
-            }
-          }
-          $(e.target).text("xo");
-        });
       });
 
-      $("btnLim").click(function(){
-
-        $(".caja").each(function(){
-          console.log(this);
-        });
-
-      });
-      /*function checkWinner() {
+      function checkWinner() {
         var cajas = document.getElementsByClassName("caja");
 
         // Comprobar filas
@@ -158,7 +131,7 @@
         if (empate) {
           alert("¡Empate!");
         }
-      }*/
+      }
     </script>
   </body>
 </html>
