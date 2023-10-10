@@ -15,8 +15,8 @@
         height: 100vh;
         display: grid;
         background-color: plum;
-        grid-template-columns: 100px 100px 100px;
-        grid-template-rows: 100px 100px 100px 100px;
+        grid-template-columns: 200px 200px 200px;
+        grid-template-rows: 200px 200px 200px 200px;
         justify-content: center;
         align-content: stretch;
         justify-items: stretch;
@@ -29,12 +29,12 @@
         text-align: center;
         line-height: 2em;
       }
+
+      .Imagen{
+        width: auto;
+        height: auto;
+      }
     </style>
-    <script
-      src="https://code.jquery.com/jquery-3.7.1.js"
-      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-      crossorigin="anonymous"
-    ></script>
   </head>
   <body>
     <div id="cont" class="contenedor">
@@ -55,16 +55,21 @@
     </div>
 
     <script>
-      /*window.onload();
       var xo = "X";
+      var xImageSrc = "bpX.jpg";
+      var oImageSrc = "bpO.jpg";
       document.getElementById("cont").addEventListener("click", function (e) {
         console.log(e.target.id);
 
         if (document.getElementById(e.target.id).innerText == "") {
           if (xo == "X") {
             xo = "O";
+            document.getElementById(e.target.id).innerHTML =
+              "<img src='" + oImageSrc + "' alt='X' class='Imagen'>";
           } else {
             xo = "X";
+            document.getElementById(e.target.id).innerHTML =
+              "<img src='" + xImageSrc + "' alt='O' class='Imagen'>";
           }
           document.getElementById(e.target.id).innerText = xo;
           checkWinner();
@@ -78,31 +83,9 @@
           console.log(elemento);
           elemento.innerText = "";
         }
-      
-      });*/
-      $("document").ready(function () {
-        var xo = "X";
-        $("#cont").click(function (e) {
-          // consle.log("click");
-          if ($(e.target).text() == "") {
-            if (xo == "X") {
-              xo = "O";
-            } else {
-              xo = "X";
-            }
-          }
-          $(e.target).text("xo");
-        });
       });
 
-      $("btnLim").click(function(){
-
-        $(".caja").each(function(){
-          console.log(this);
-        });
-
-      });
-      /*function checkWinner() {
+      function checkWinner() {
         var cajas = document.getElementsByClassName("caja");
 
         // Comprobar filas
@@ -158,7 +141,7 @@
         if (empate) {
           alert("¡Empate!");
         }
-      }*/
+      }
     </script>
   </body>
 </html>
