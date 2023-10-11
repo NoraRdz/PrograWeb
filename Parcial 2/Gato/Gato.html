@@ -30,9 +30,11 @@
         line-height: 2em;
       }
 
-      .Imagen{
-        width: auto;
-        height: auto;
+      .caja img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: containt;
+        object-position: center center;
       }
     </style>
   </head>
@@ -65,20 +67,19 @@
           if (xo == "X") {
             xo = "O";
             document.getElementById(e.target.id).innerHTML =
-              "<img src='" + oImageSrc + "' alt='X' class='Imagen'>";
+              "<img src='" + oImageSrc + "' alt='X' >";
           } else {
             xo = "X";
             document.getElementById(e.target.id).innerHTML =
-              "<img src='" + xImageSrc + "' alt='O' class='Imagen'>";
+              "<img src='" + xImageSrc + "' alt='O' >";
           }
-          document.getElementById(e.target.id).innerText = xo;
+          /* document.getElementById(e.target.id).innerText = xo;*/
           checkWinner();
         }
       });
 
       document.getElementById("btnLim").addEventListener("click", function (e) {
         let cajas = document.getElementsByClassName("caja");
-
         for (const elemento of cajas) {
           console.log(elemento);
           elemento.innerText = "";
