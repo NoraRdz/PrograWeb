@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="contenedor"></div>
+
+    <script>
+      let encabezados = ["Nombre", "ApellidoP", "ApellidoM"];
+
+     // let tab = "table";
+
+      //Arreglos[] de objetos{}
+      let datos = [
+        {
+          Nombre: "Nora",
+          ApellidoP: "Rodriguez",
+          ApellidoM: "Lopez",
+        },
+        { 
+            Nombre: "Nora", 
+            ApellidoP: "Rodriguez", 
+            ApellidoM: "Lopez" 
+        },
+        {
+          Nombre: "Nora",
+          ApellidoP: "Rodriguez",
+          ApellidoM: "Lopez",
+        },
+      ];
+
+      let tab=document.createElement("th");
+
+
+    
+      let fil = "tr";
+
+      encabezados.forEach((elemento) => {
+        let th = document.createElement("th");
+        th.innerText = elemento;
+        fill.appendChild(th);
+      });
+
+      enc.appendChild(fil);
+      tab.appendChild(enc);
+
+      tbody=document.createElement("tbody");
+
+      datos.forEach(function(elemento){
+        let fila = document.CreateElement("tr");
+
+        let td1 = document.CreateElement("td");
+        td.innerText=elemento.Nombre;
+        fila.appendChild(td1);
+
+        let td12 = document.CreateElement("td");
+        td.innerText=elemento.Nombre;
+        fila.appendChild(td2);
+
+        let td3 = document.CreateElement("td");
+        td.innerText=elemento.Nombre;
+        fila.appendChild(td3);
+
+        tbody.appendChild(fila);
+    });
+
+    
+      tab.appendChild(tbody);
+
+      document.getElementById("contenedor").appendChild(tab);
+    </script>
+  </body>
+</html>

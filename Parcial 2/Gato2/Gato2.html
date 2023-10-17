@@ -67,11 +67,11 @@
           if (xo == "X") {
             xo = "O";
            document.getElementById(e.target.id).innerHTML =
-              "<img src='" + oImageSrc + "' alt='X' >";
+              "<img src='" + oImageSrc + "' alt='O' >";
           } else {
             xo = "X";
            document.getElementById(e.target.id).innerHTML =
-              "<img src='" + xImageSrc + "' alt='O' >";
+              "<img src='" + xImageSrc + "' alt='X' >";
           }
           /*document.getElementById(e.target.id).innerText = xo;*/
           checkWinner();
@@ -92,11 +92,11 @@
         // Comprobar filas
         for (var i = 0; i < 3; i++) {
           if (
-            cajas[i * 3].innerText !== "" &&
-            cajas[i * 3].innerText === cajas[i * 3 + 1].innerText &&
-            cajas[i * 3].innerText === cajas[i * 3 + 2].innerText
+            cajas[i * 3].innerHTML !== "" &&
+            cajas[i * 3].innerHTML === cajas[i * 3 + 1].innerHTML &&
+            cajas[i * 3].innerHTML === cajas[i * 3 + 2].innerHTML
           ) {
-            alert("¡Jugador " + cajas[i * 3].innerText + " gana!");
+            alert("¡Jugador " + cajas[i * 3].innerHTML + " gana!");
             return;
           }
         }
@@ -104,37 +104,37 @@
         // Comprobar columnas
         for (var i = 0; i < 3; i++) {
           if (
-            cajas[i].innerText !== "" &&
-            cajas[i].innerText === cajas[i + 3].innerText &&
-            cajas[i].innerText === cajas[i + 6].innerText
+            cajas[i].innerHTML !== "" &&
+            cajas[i].innerHTML === cajas[i + 3].innerHTML &&
+            cajas[i].innerHTML === cajas[i + 6].innerHTML
           ) {
-            alert("¡Jugador " + cajas[i].innerText + " gana!");
+            alert("¡Jugador " + cajas[i].innerHTML + " gana!");
             return;
           }
         }
 
         // Comprobar diagonales
         if (
-          cajas[0].innerText !== "" &&
-          cajas[0].innerText === cajas[4].innerText &&
-          cajas[0].innerText === cajas[8].innerText
+          cajas[0].innerHTML !== "" &&
+          cajas[0].innerHTML === cajas[4].innerHTML &&
+          cajas[0].innerHTML === cajas[8].innerHTML
         ) {
-          alert("¡Jugador " + cajas[0].innerText + " gana!");
+          alert("¡Jugador " + cajas[0].innerHTML + " gana!");
           return;
         }
         if (
-          cajas[2].innerText !== "" &&
-          cajas[2].innerText === cajas[4].innerText &&
-          cajas[2].innerText === cajas[6].innerText
+          cajas[2].innerHTML !== "" &&
+          cajas[2].innerHTML === cajas[4].innerHTML &&
+          cajas[2].innerHTML === cajas[6].innerHTML
         ) {
-          alert("¡Jugador " + cajas[2].innerText + " gana!");
+          alert("¡Jugador " + cajas[2].innerHTML + " gana!");
           return;
         }
 
         // Comprobar empate
         var empate = true;
         for (var i = 0; i < cajas.length; i++) {
-          if (cajas[i].innerText === "") {
+          if (cajas[i].innerHTML === "") {
             empate = false;
             break;
           }
