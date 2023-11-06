@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">Peticion XmlHttpRequest</button>
+    <div id="chuck"></div>
+    <script>
+      document.getElementById("btn").addEventListener("click", () => {
+        const data = null;
+
+        const xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+
+        xhr.addEventListener("readystatechange", function () {
+          if (this.readyState === this.DONE) {
+            console.log(this.responseText);
+          }
+        });
+
+        xhr.open("GET", "https://api.artic.edu/api/v1/artworks");
+        xhr.setRequestHeader("Accept", "*/*");
+        xhr.setRequestHeader(
+          "User-Agent",
+          "Thunder Client (https://www.thunderclient.com)"
+        );
+
+        xhr.send(data);
+      });
+    </script>
+  </body>
+</html>
