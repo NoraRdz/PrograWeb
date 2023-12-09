@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" method="get">
+      <h3>Formulario de registro</h3>
+      <fieldset>
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre" /><br />
+
+        <label for="direccion">Direccion</label>
+        <input type="text" name="direccion" id="direccion" />
+
+        <label for="comentario">Comentario</label>
+        <textarea
+          name="comentario"
+          id="comentario"
+          cols="30"
+          rows="10"
+        ></textarea>
+      </fieldset>
+      <fieldset>
+        <label for="select1">Operacion con select</label>
+        <select name="select1" id="select1">
+          <option value="suma">Suma</option>
+          <option value="resta">Resta</option>
+        </select>
+      </fieldset>
+      <br /><br />
+      <input type="submit" />
+
+      <button id="brn_Peticion">Peticion</button>
+    
+    </form>
+    <script>
+
+        document.getElementById("btn_Peticion").addEventListener("click",async()=>{
+
+            let id=prompt("id del usuario");
+            let response=await fetch(`http://localhost:8082/usuarios`,{method:"GET"});
+                let data = await response.json();
+                console.log(data);
+                if(data.status==0)
+                {
+                  alert(data.mensaje)
+                }
+                {
+                  console.log(data);
+                  document.getElementById("nombre").value=data.data.datos.nombre;
+                }
+              });
+
+    </script> 
+</body>
+</html>

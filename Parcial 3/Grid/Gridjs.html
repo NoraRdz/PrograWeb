@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <title>GridJS</title>
+  <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="wrapper"></div>
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+    <script>
+      const grid = new gridjs.Grid({
+        columns: ["ID_USUARIO","NOMBRE","APELLIDO","FECHA_NACIMIENETO", "CORREO", "TELEFONO","PLAN","FECHA_ALTA"],
+        server:{
+            url:"http://localhost:8082/usuarios",
+            then:data=>data.map(usuario=>[usuario.ID_USUARIO,usuario.NOMBRE,usuario.APELLIDO,
+            usuario.FECHA_NACIMIENTO, usuario.CORREO. usuario.TELEFONO, usuario.PLAN, usuario.FECHA_ALTA])
+        }
+      }).render(document.getElementById("wrapper"));
+    </script>
+
+  </body>
+</html>
