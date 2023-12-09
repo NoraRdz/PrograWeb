@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Programacion Web",
+		"liveServer.settings.CustomBrowser": "chrome"
+	}
+}

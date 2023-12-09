@@ -3,57 +3,269 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+      body{
+        background-color: antiquewhite;
+      }
+      #Central {
+        margin-left: 300px;
+        margin-right: 300px;
+        width: auto;
+        background-color: white;
+      }
+      #Otro{
+        margin-left:20px;
+        margin-right: 20px;
+      }
+      div{
+        padding: 10px;
+      }
+      .Cont{
+        display: grid;
+        grid-template-columns: auto auto auto ;
+        grid-template-rows: auto auto auto;
+        justify-content: center;
+        align-content: center;
+      }
+      #Caja1 {
+        grid-column-start: 2;
+        grid-column-end: 3;
+      }
+      #Encabezado{
+        border-bottom: 10px royalblue;
+        width: auto;
+        height: 30 px;
+        background-color: rgb(162, 145, 179);
+        align-content: center;
+        color: aliceblue;
+        font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-style: oblique;
+      }
+      #Encabezado h3{
+        text-align: center;
+      }
+    </style>
     <title>Document</title>
   </head>
   <body>
-    <form action="" method="get">
-      <h3>Formulario de registro</h3>
-      <fieldset>
-        <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" id="nombre" /><br />
-
-        <label for="direccion">Direccion</label>
-        <input type="text" name="direccion" id="direccion" />
-
-        <label for="comentario">Comentario</label>
-        <textarea
-          name="comentario"
-          id="comentario"
-          cols="30"
-          rows="10"
-        ></textarea>
-      </fieldset>
-      <fieldset>
-        <label for="select1">Operacion con select</label>
-        <select name="select1" id="select1">
-          <option value="suma">Suma</option>
-          <option value="resta">Resta</option>
-        </select>
-      </fieldset>
-      <br /><br />
-      <input type="submit" />
-
-      <button id="brn_Peticion">Peticion</button>
+    <div id="Encabezado"><h3>Formulario de registro</h3></div>
     
+<form id="frmRegistro">
+    <div id="Central">
+      
+      <div id="Otro">
+        <div>
+          <label for="Codigo">Codigo</label>
+          <input type="text" id="Codigo" name="Codigo"  class="form-control" placeholder="Ejem. 1">
+        </div>
+
+        <div>
+          <label for="Material">Material</label>
+          <input type="text"  id="Material" name="Material" class="form-control" placeholder="Ejem. Terciopelo">
+        </div>
+
+        <div>
+          <label for="Color">Color</label>
+          <input type="text" id="Color" name="Color" class="form-control" placeholder="Ejem. Rojo">
+        </div>
+        <div>
+          <label for="Categoria">Categoria</label>
+          <input type="text" id="Categoria" name="Categoria" class="form-control" placeholder="Ejem. Tacones">
+        </div>
+
+        <div>
+          <label for="Talla">Talla</label>
+          <input type="text" id="Talla" name="Talla" class="form-control" placeholder="Ejem. 22">
+        </div>
+        <div >
+          <label for="Precio">Precio</label>
+          <input type="text" id="Precio" name="Precio" class="form-control " placeholder="Ejem. 235">
+        </div>
+    
+      </div>
     </form>
+      <div class="Cont">
+        <div class="Caja">
+          <button type="button" id="btn_Consulta" class="btn btn-primary">Consulta</button>    
+        </div>
+      
+        <div class="Caja">
+          <button type="button" id="btn_AgregarReg"class="btn btn-primary">Agregar</button>
+        </div>
+
+        <div class="Caja">      
+          <button type="button" id="btn_EliminarReg"class="btn btn-primary">Eliminar</button>
+        </div>
+
+        <div class="Caja">
+         <button type="button" id="btn_ModificarReg"class="btn btn-primary">Modificar</button>
+        </div>
+
+        <div class="Caja" id="Caja1">
+         <button type="button" id="btn_GenerarPDF"class="btn btn-primary">Generar PDF</button>
+        </div>
+
+    </div>
+
     <script>
+      
+      function validarID() {
+         var codigoValue = document.getElementById('Codigo').value.trim();
+        if (codigoValue.length === 0) {
+         return false;
+         }
+         else 
+         {return true;}
+        }
 
-        document.getElementById("btn_Peticion").addEventListener("click",async()=>{
+        function validarCampos() {
+          var campos = ['Codigo', 'Material', 'Color', 'Categoria', 'Talla', 'Precio'];
+          var camposVacios = [];
+          campos.forEach(function(campo) {
+          var valor = document.getElementById(campo).value.trim();
+          if (valor === '') {
+             camposVacios.push(campo);
+         }
+         })
 
-            let id=prompt("id del usuario");
-            let response=await fetch(`http://localhost:8082/usuarios`,{method:"GET"});
-                let data = await response.json();
-                console.log(data);
-                if(data.status==0)
-                {
-                  alert(data.mensaje)
-                }
-                {
-                  console.log(data);
-                  document.getElementById("nombre").value=data.data.datos.nombre;
-                }
-              });
+        if (camposVacios.length > 0) {
+          var camposVaciosString = camposVacios.join(', ');
+          Swal.fire('Por favor, complete los campos: ' + camposVaciosString);
+          return false
+        }
+        else{return true}
+        }
 
-    </script> 
-</body>
+        function validarCamposs() {
+          var campos = ['Material', 'Color', 'Categoria', 'Talla', 'Precio'];
+          var camposVacios = [];
+          campos.forEach(function(campo) {
+          var valor = document.getElementById(campo).value.trim();
+          if (valor === '') {
+             camposVacios.push(campo);
+         }
+         })
+
+        if (camposVacios.length > 0) {
+          var camposVaciosString = camposVacios.join(', ');
+          Swal.fire('Por favor, complete los campos: ' + camposVaciosString);
+          return false
+        }
+        else{return true}
+        }
+
+        function limpiarCampos() {
+            document.getElementById('Codigo').value = '';
+            document.getElementById('Material').value = '';
+            document.getElementById('Color').value = '';
+            document.getElementById('Categoria').value = '';
+            document.getElementById('Talla').value = '';
+            document.getElementById('Precio').value = '';
+          }
+
+
+         //Boton para consultar
+        document.getElementById("btn_Consulta").addEventListener("click", async () => {
+           let id=document.getElementById("Codigo").value;
+          // let id = document.getElementById("Codigo").value;
+          if(validarID()!=false)
+          {
+          let response = await fetch(
+            `http://localhost:8082/catalogo?Codigo=${id}`);
+          let data = await response.json();
+          console.log(data);
+          if (data.status == 0) {
+            Swal.fire(data.mensaje);
+            console.log(data.status);
+          } else {
+            Swal.fire(data.mensaje);
+            console.log(data.status);
+            console.log(data.datos);
+            document.getElementById("Codigo").value = data.datos.Codigo;
+            document.getElementById("Material").value = data.datos.Material;
+            document.getElementById("Color").value = data.datos.Color;
+            document.getElementById("Categoria").value = data.datos.Categoria;
+            document.getElementById("Talla").value = data.datos.Talla;
+            document.getElementById("Precio").value = data.datos.Precio;
+          }
+        }
+        else
+        {
+          Swal.fire("Tiene que ingresar un ID");
+        }
+        });
+
+
+        document.getElementById("btn_AgregarReg").addEventListener("click", async()=>{
+          if(validarCamposs()!=false){
+          let form =document.getElementById("frmRegistro");
+          let formdata=new FormData(form);
+          console.log([...formdata.entries()]);
+          let response=await fetch('http://localhost:8082/catalogo/insertar',{
+            method:"POST",
+            headers:{"Content-Type":"application/x-www-form-urlencoded"},
+            body: new URLSearchParams(formdata),
+          });
+          let data=await response.json();
+          console.log(data);
+          Swal.fire(data.mensaje);
+        }
+        });
+
+        document.getElementById("btn_EliminarReg").addEventListener("click", async()=>{
+          if(validarID()!=false)
+          {
+          let id=document.getElementById("Codigo").value;
+          let response = await fetch( `http://localhost:8082/catalogo/eliminar?Codigo=${id}`,{
+          method:"delete"});
+          let data=await response.json();
+          console.log(data);
+          Swal.fire(data.mensaje);
+          limpiarCampos();
+        }
+        else
+        {
+          Swal.fire("Tiene que ingresar un ID");
+        }
+        });
+        
+        document.getElementById("btn_ModificarReg").addEventListener("click",async()=>{
+          if(validarCampos()!=false){
+          let form =document.getElementById("frmRegistro");
+          let formdata=new FormData(form);
+          console.log([...formdata.entries()]);
+          let response=await fetch("http://localhost:8082/catalogo/modificar",
+          {
+            method:"PUT",
+            headers:{"Content-Type":"application/x-www-form-urlencoded"},
+            body: new URLSearchParams(formdata),
+          });
+          let data=await response.json();
+          console.log(data);
+          Swal.fire(data.mensaje);
+        }
+        });
+
+        document.getElementById("btn_GenerarPDF").addEventListener("click", async()=>{
+         
+          const doc =  new jspdf.jsPDF();
+          let response = await fetch(`http://localhost:8082/catalogo?Codigo=${id}`);
+          let data = await response.json();
+          console.log(data)
+  
+           doc.text(`Codigo: ${data.datos.Codigo}`, 10, 10);
+           doc.text(`Matrial: ${data.datos.Material}`, 10, 20);
+           doc.text(`Color: ${data.datos.Color}`, 10, 30);
+           doc.text(`Categoria: ${data.datos.Categoria}`, 10, 40);
+           doc.text(`Talla: ${data.datos.Talla}`, 10, 50);
+           doc.text(`Precio: ${data.datos.Precio}`, 10, 50);
+  
+  
+  doc.save("CatalogoProducto.pdf");
+
+})
+</script>
+  </body>
 </html>

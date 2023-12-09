@@ -1,8 +1,8 @@
 const http=require('http')
-const servidor= http.CreateServer((req, res)=>{
+const servidor= http.createServer((req, res)=>{
 res.write("servidor  http node contestando a peticion get");
 res.end();
 });
-servidor.listener(8080, ()=>{
+servidor.listen(8082, ()=>{
 console.log("Servidor node corriendo en el puerto 8082")
 });
